@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: #FEF9F3;
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100dvh;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 데스크탑에서만 아이폰 프레임 */
+@media (min-width: 600px) {
+  body {
+    background: radial-gradient(ellipse at 30% 20%, #F5DEB3 0%, #D4A96A 40%, #B8864E 80%, #8B6240 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #root {
+    width: 390px;
+    height: 844px;
+    border-radius: 54px;
+    box-shadow:
+      0 0 0 10px #5C3A1E,
+      0 0 0 12px rgba(255,220,160,0.25),
+      0 0 0 22px rgba(139,98,64,0.3),
+      0 40px 90px rgba(60,30,10,0.6),
+      0 10px 28px rgba(60,30,10,0.3);
+  }
+  .preview-only {
+    display: flex !important;
+  }
+}
+
+/* 모바일에서 가짜 상태바 숨김 */
+.preview-only {
+  display: none !important;
+}
+
+.jua {
+  font-family: 'Jua', sans-serif !important;
+}
+
+.scroll-area {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-area::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); opacity: 0.6; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes fadeSlideUp {
+  from { transform: translateY(8px); opacity: 0; }
+  to   { transform: translateY(0);   opacity: 1; }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+button:active {
+  opacity: 0.78;
+  transform: scale(0.95);
+}
+
+input:focus {
+  border-color: #C084FC !important;
+  box-shadow: 0 0 0 3px rgba(192,132,252,0.2) !important;
+  outline: none;
+}
