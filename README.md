@@ -1,73 +1,53 @@
-# React + TypeScript + Vite
+# 하루친구 (HaruFriend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+반려동물 지출을 기록하고 관리하는 앱인토스 미니앱이에요.
 
-Currently, two official plugins are available:
+## 주요 기능
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **홈** — 이번 달 지출 현황과 예산 대비 사용량 확인
+- **캘린더** — 날짜별 지출 내역 조회
+- **통계** — 카테고리·월별 지출 차트 분석
+- **프로필** — 반려동물 정보 및 월 예산 설정
 
-## React Compiler
+## 기술 스택
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- AppsInToss Web Framework (`@apps-in-toss/web-framework`)
+- Zustand (상태 관리)
+- Recharts (차트)
+- Tailwind CSS v4
 
-## Expanding the ESLint configuration
+## 시작하기
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```bash
+# 패키지 설치
+npm install
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# 개발 서버 실행
+npm run dev
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 빌드
+npm run build
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 앱인토스에 배포
+npm run deploy
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 프로젝트 구조
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+src/
+├── pages/
+│   ├── Home.tsx        # 홈 화면
+│   ├── Calendar.tsx    # 캘린더 화면
+│   ├── Stats.tsx       # 통계 화면
+│   ├── Profile.tsx     # 프로필 화면
+│   ├── AddExpense.tsx  # 지출 추가 시트
+│   └── Onboarding.tsx  # 온보딩 플로우
+├── store/
+│   └── usePetStore.ts  # 전역 상태 (반려동물 정보, 지출 내역)
+├── components/
+│   └── ui.tsx          # 공통 UI 컴포넌트
+└── types/
+    └── index.ts        # 타입 정의
 ```
