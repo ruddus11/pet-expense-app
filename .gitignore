@@ -20,3 +20,6 @@ Thumbs.db
 # Logs
 *.log
 npm-debug.log*
+
+# AppsInToss 빌드 아티팩트 (앱 ID 및 컴파일 번들 포함)
+*.ait
